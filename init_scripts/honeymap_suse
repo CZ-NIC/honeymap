@@ -1,0 +1,119 @@
+#!/bin/sh
+#
+#
+### BEGIN INIT INFO
+# Provides:          honemap
+# Required-Start:    $syslog $remote_fs
+# Should-Start:      $time ypbind smtp
+# Required-Stop:     $syslog $remote_fs
+# Should-Stop:       ypbind smtp
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: FOO XYZ daemon providing ZYX
+# Description:       Start FOO to allow XY and provide YZ
+#   continued on second line by '#<TAB>'
+#   should contain enough info for the runlevel editor
+#   to give admin some idea what this service does and
+#   what it's needed for ...
+#   (The Short-Description should already be a good hint.)
+### END INIT INFO
+#
+# Note on runlevels:
+# 0 - halt/poweroff             6 - reboot
+# 1 - single user           2 - multiuser without network exported
+# 3 - multiuser w/ network (text mode)  5 - multiuser w/ network and X11 (xdm)
+
+HONEYMAP_SERVER=/opt/honeymap/server/server
+GEOLOC_EVENTS=/opt/honeymap/geoloc/geoloc.py
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     be verbose in local rc status and clear it afterwards
+#      rc_status -v -r  ditto and clear both the local and overall rc status
+#      rc_status -s     display "skipped" and exit with status 3
+#      rc_status -u     display "unused" and exit with status 3
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num>
+#      rc_reset         clear both the local and overall rc status
+#      rc_exit          exit appropriate to overall rc status
+#      rc_active        checks whether a service is activated by symlinks
+. /etc/rc.status
+
+# Reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0   - success
+# 1       - generic or unspecified error
+# 2       - invalid or excess argument(s)
+# 3       - unimplemented feature (e.g. "reload")
+# 4       - user had insufficient privileges
+# 5       - program is not installed
+# 6       - program is not configured
+# 7       - program is not running
+# 8--199  - reserved (8--99 LSB, 100--149 distrib, 150--199 appl)
+#
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signaling is not supported) are
+# considered a success.
+
+case "$1" in
+    start)
+    echo -n "Starting honeymap"
+    ## Start daemon with startproc(8). If this fails
+    ## the return value is set appropriately by startproc.
+
+    cd /opt/honeymap/geoloc
+    nohup python $GEOLOC_EVENTS > /dev/null 2>&1  &
+    cd /opt/honeymap
+    nohup $HONEYMAP_SERVER > /dev/null 2>&1  &
+
+    # Remember status and be verbose
+    rc_status -v
+    ;;
+    stop)
+    echo -n "Shutting down honeymap"
+    ## Stop daemon with killproc(8) and if this fails
+    ## killproc sets the return value according to LSB.
+    /sbin/killproc python $GEOLOC_EVENTS
+    /sbin/killproc $HONEYMAP_SERVER
+
+    # Remember status and be verbose
+    rc_status -v
+    ;;
+    restart)
+    ## Stop the service and regardless of whether it was
+    ## running or not, start it again.
+    $0 stop
+    $0 start
+
+    # Remember status and be quiet
+    rc_status
+    ;;
+    status)
+    echo -n "Checking for service honeymap"
+    ## Check status with checkproc(8), if process is running
+    ## checkproc will return with exit status 0.
+
+    # Return value is slightly different for the status command:
+    # 0 - service up and running
+    # 1 - service dead, but /var/run/  pid  file exists
+    # 2 - service dead, but /var/lock/ lock file exists
+    # 3 - service not running (unused)
+    # 4 - service status unknown :-(
+    # 5--199 reserved (5--99 LSB, 100--149 distro, 150--199 appl.)
+
+    # NOTE: checkproc returns LSB compliant status values.
+    /sbin/checkproc $HONEYMAP_SERVER
+    # NOTE: rc_status knows that we called this init script with
+    # "status" option and adapts its messages accordingly.
+    rc_status -v
+    ;;
+    *)
+    echo "Usage: $0 {start|stop|status|restart}"
+    exit 1
+    ;;
+esac
+rc_exit
