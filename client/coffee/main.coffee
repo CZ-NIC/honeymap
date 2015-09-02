@@ -3,7 +3,7 @@ config =
   colors:
     src: { stroke: 'darkred', fill: 'red' }
     dst: { stroke: '#383F47', fill: '#32CD32' }
-    scale: [ '#FFFFFF', '#0071A4' ]
+    scale: [ '#C8EEFF', '#0071A4' ]
 
 jQuery(document).ready ->
   log = new Log(config)

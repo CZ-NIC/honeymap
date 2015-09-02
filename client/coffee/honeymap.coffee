@@ -25,7 +25,7 @@ class Honeymap
         regions: [
           scale: config.colors.scale
           attribute: 'fill'
-          normalizeFunction: 'linear'
+          normalizeFunction: 'polynomial'
           values: {}
         ]
       onRegionLabelShow: (ev, label, code) =>
