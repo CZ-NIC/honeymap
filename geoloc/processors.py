@@ -153,6 +153,12 @@ def kippo_sessions(identifier, payload, gi):
         traceback.print_exc()
         return
 
+    a_family = get_addr_family(dec.peerIP)
+    if a_family == socket.AF_INET:
+        geoloc = geoloc_none( gi[a_family].record_by_addr(dec.peerIP) )
+    elif a_family == socket.AF_INET6:
+        geoloc = geoloc_none( gi[a_family].record_by_addr_v6(dec.peerIP) )
+
 #    print dec.time + "," + dec.peerIP + "," + dec.hostPort + "," + dec.hostIP + "," + dec.peerPort, + "," + dec.permalink
     geoloc2 = {}
     if identifier == 'ident':
@@ -164,7 +170,6 @@ def kippo_sessions(identifier, payload, gi):
         elif dec.hostIP == 'vps2':
             geoloc2 = geoloc_Sydney
         else:
-            a_family = get_addr_family(dec.hostIP)
             if a_family == socket.AF_INET:
                 geoloc2 = geoloc_none( gi[a_family].record_by_addr(dec.hostIP) )
             elif a_family == socket.AF_INET6:
@@ -176,12 +181,6 @@ def kippo_sessions(identifier, payload, gi):
     if dec.shasum:
         print "kippo.shasum " + format(payload)
 
-    a_family = get_addr_family(dec.peerIP)
-    if a_family == socket.AF_INET:
-        geoloc = geoloc_none( gi[a_family].record_by_addr(dec.peerIP) )
-    elif a_family == socket.AF_INET6:
-        geoloc = geoloc_none( gi[a_family].record_by_addr_v6(dec.peerIP) )
-
     return {'type': 'kippo.sessions', 'sensor': identifier, 'time': timestr(tstamp),
 'latitude': geoloc['latitude'], 'longitude': geoloc['longitude'], 'source': dec.peerIP,
 #'latitude2': geoloc2['latitude'], 'longitude2': geoloc2['longitude'], 'dest': dec.hostIP,
@@ -190,7 +189,7 @@ def kippo_sessions(identifier, payload, gi):
 'city2': geoloc2['city'], 'country2': geoloc2['country_name'], 'countrycode2': geoloc2['country_code']}
 
 def conpot_events(identifier, payload, gi):
-    if identifier != 'ident':
+    if identifier != 'ident' and identifier != 'vps_ident':
         print identifier + " " + 'conpot' + " " + format(payload)
         return
 
@@ -214,7 +213,21 @@ def conpot_events(identifier, payload, gi):
     elif a_family == socket.AF_INET6:
         geoloc = geoloc_none( gi[a_family].record_by_addr_v6(remote) )
 
-    type = 'conpot.events-'+dec.data_type
+    geoloc2 = {}
+    if identifier == 'ident':
+        geoloc2 = geoloc_Prague
+    elif identifier == 'vps_ident':
+        if dec.public_ip == 'vps1':
+            geoloc2 = geoloc_San_Jose
+        elif dec.public_ip == 'vps2':
+            geoloc2 = geoloc_Sydney
+        else:
+            if a_family == socket.AF_INET:
+                geoloc2 = geoloc_none( gi[a_family].record_by_addr(dec.public_ip) )
+            elif a_family == socket.AF_INET6:
+                geoloc2 = geoloc_none( gi[a_family].record_by_addr_v6(dec.public_ip) )
+
+    type = 'conpot.events-' + dec.data_type
 
     message = {'type': type, 'sensor': identifier, 'time': timestr(tstamp),
 'latitude': geoloc['latitude'], 'longitude': geoloc['longitude'], 'source': remote,
