@@ -262,3 +262,32 @@ def artillery(identifier, payload, gi):
 'latitude2': geoloc2['latitude'], 'longitude2': geoloc2['longitude'], 'dest': dec.local_host,
 'city': geoloc['city'], 'country': geoloc['country_name'], 'countrycode': geoloc['country_code'],
 'city2': geoloc2['city'], 'country2': geoloc2['country_name'], 'countrycode2': geoloc2['country_code']}
+
+
+def turris(identifier, payload, gi):
+    if identifier != 'turris_ident':
+        print identifier + ' turris ' + format(payload)
+        return
+
+    try:
+        dec = ezdict(json.loads(str(payload)))
+    except:
+        print 'exception processing turris event'
+        traceback.print_exc()
+        return
+
+    remote = dec.remote
+
+    a_family = get_addr_family(remote)
+    if a_family == socket.AF_INET:
+        geoloc = geoloc_none( gi[a_family].record_by_addr(remote) )
+    elif a_family == socket.AF_INET6:
+        geoloc = geoloc_none( gi[a_family].record_by_addr_v6(remote) )
+
+    tstamp = datetime.datetime.now()
+
+    message = {'type': 'turris', 'sensor': identifier, 'time': timestr(tstamp),
+'latitude': geoloc['latitude'], 'longitude': geoloc['longitude'], 'source': remote,
+'city': geoloc['city'], 'country': geoloc['country_name'], 'countrycode': geoloc['country_code']}
+
+    return message

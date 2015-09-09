@@ -17,6 +17,7 @@ CHANNELS = [
 #    'beeswarm.hive',
     'kippo.sessions',
     'conpot.events',
+    'turris',
 #    'artillery',
 ]
 GEOLOC_CHAN = 'geoloc.events'
@@ -30,6 +31,7 @@ PROCESSORS = {
     'beeswarm.hive': [beeswarm_hive,],
     'kippo.sessions': [kippo_sessions,],
     'conpot.events': [conpot_events,],
+    'turris': [turris,],
     'artillery': [artillery,],
 }
 
