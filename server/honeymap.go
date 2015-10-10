@@ -11,6 +11,7 @@ import (
 	"time"
 	"runtime"
 	"path"
+	"fmt"
 )
 
 const staticDir = "../client"
@@ -41,6 +42,7 @@ func readConfig() Config {
 
 func checkFatalError(err error) {
 	if err != nil {
+		log.Printf("checkFatalError:\n")
 		log.Printf("%s\n", err)
 		os.Exit(-1)
 	}
@@ -87,6 +89,15 @@ func hpfeedsConnect(config Config, geolocEvents chan hpfeeds.Message) {
 }
 
 func main() {
+	defer func() {
+		r := recover();
+		if r != nil {
+			fmt.Println("got this from panic", r)
+		} else {
+			fmt.Println("got nothing from panic")
+		}
+	}()
+
 	config := readConfig()
 
 	http.Handle("/", http.FileServer(http.Dir(dirname() + "/" + staticDir + "/")))
