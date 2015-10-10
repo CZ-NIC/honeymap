@@ -6,9 +6,9 @@
   <link rel="stylesheet" href="css/honeymap.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="extern/jquery-jvectormap-1.0.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="extern/bootstrap.min.css" type="text/css" media="screen"/>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+  <link href='extern/Ubuntu+Mono.css' rel='stylesheet' type='text/css'>
   <meta content="Florian Weingarten, Mark Schloesser, Johannes Gilger" name="author" />
-  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+  <script src="extern/sockjs-0.3.min.js"></script>
   <script src="extern/jquery-1.7.2.min.js"></script>
   <script src="extern/jquery-jvectormap-1.0.min.js"></script>
   <script src="extern/jquery-jvectormap-world-mill-en.js"></script>
@@ -19,8 +19,8 @@
 <body>
   <div id="world-map"></div>
   <div id="log"></div>
-  <div id="logo1"><a href="http://www.honeynet.org/"><img src="img/hp_logo.png"></a></div>
-  <div id="logo2"><a href="http://www.itsec.rwth-aachen.de/"><img src="img/itsec_logo.png"></a></div>
+  <div id="logo1"><a href="http://www.honeynet.org/" target="_blank"><img src="img/hp_logo.png"></a></div>
+  <div id="logo2"><a href="https://labs.nic.cz/" target="_blank"><img src="img/labs_logo.png"></a></div>
   <div id="helpbtn"><a href="#helpmodal" data-toggle="modal"><img src="img/help.png" alt="Help" /></a></div>
 
   <div class="modal hide" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodal" aria-hidden="true">
@@ -29,101 +29,184 @@
       <h3>HoneyMap</h3>
     </div>
     <div class="modal-body">
-      <p>
-        You are looking at the <b>HoneyMap</b>, a real-time world map which visualizes attacks
-        captured by honeypots of the <a href="http://www.honeynet.org/">Honeynet Project</a>.
-        Red markers on the map represent attackers, yellow markers are targets (honeypot sensors).
-      </p>
-      <p>
-        This project is highly experimental and should be considered a BETA version. So far,
-        current Chrome and Firefox browsers should work fine. Opera, Safari and Internet Explorer
-        probably wont work completely. If you identify bugs or have feature requests, please let us know.
-      </p>
-      <h4>Technology</h4>
-      <ul>
-        <li>
-          <b>Frontend:</b>
-          <a href="http://coffeescript.org/">CoffeeScript</a>,
-          <a href="http://jquery.com/">jQuery</a>,
-          <a href="http://jvectormap.com/">jVectorMap</a>,
-          <a href="http://ricostacruz.com/jquery.transit/">Transit</a>,
-          <a href="http://twitter.github.com/bootstrap/">bootstrap</a>
-        </li>
-        <li>
-          <b>Backend:</b>
-          <a href="http://golang.org/">Go</a>,
-          <a href="http://sockjs.org/">SockJS</a>,
-          <a href="https://github.com/rep/hpfeeds">hpfeeds</a>
-        </li>
+      <ul class="nav nav-pills btn-small pull-right">
+        <li class="active"><a href="#cz" data-toggle="tab">Česky</a></li>
+        <li><a href="#en" data-toggle="tab">English</a></li>
       </ul>
-      Sourcecode for this project is available on <a href="https://github.com/fw42/honeymap/">GitHub</a>.
-      <h4>Authors</h4>
-      <ul>
-        <li>
-          Florian Weingarten
-          (<a href="mailto:flo@hackvalue.de">flo@hackvalue.de</a>)
-          (<a href="https://twitter.com/fw1729">@fw1729</a>)
-          (<a href="https://github.com/fw42/">fw42</a>)
-        </li>
-        <li>
-          Mark Schloesser
-          (<a href="mailto:ms@mwcollect.org">ms@mwcollect.org</a>)
-          (<a href="https://twitter.com/repmovsb">@repmovsb</a>)
-          (<a href="https://github.com/rep">rep</a>)
-        </li>
-        <li>
-          Johannes Gilger
-          (<a href="mailto:heipei@heipei.net">heipei@heipei.net</a>)
-          (<a href="https://twitter.com/heipei">@heipei</a>)
-          (<a href="https://github.com/heipei">heipei</a>)
-        </li>
-      </ul>
+      <div class="clearfix"></div>
+      <div class="tab-content">
+        <div class="tab-pane active" id="cz">
+          <p>
+            Právě se díváte na <b>HoneyMap</b> - mapu světa, která v reálném čase zobrazuje útoky
+            zachycené sítí honeypotů provozovaných sdružením <a href="https://www.nic.cz/">CZ.NIC</a>.
+            Červené body na mapě reprezentují útočníky, zelené značky jsou cíle (senzory honeypotů).
+          </p>
+          <p>
+            Tento projektu je ve fázi experimentu a jedná se o BETA verzi. Současné verze prohlížečů
+            Chrome a Firefox by měly fungovat dobře. Opera, Safari a Internet Explorer s touto aplikací
+            pravděpodobně 100% funkční nebudou. Pokud zjistíte chybu nebo máte nápad, jak aplikaci
+            vylepšit, ozvěte se nám prosím.
+          </p>
+          <h4>Technologie</h4>
+          <ul>
+            <li>
+              <b>Frontend:</b>
+              <a href="http://coffeescript.org/">CoffeeScript</a>,
+              <a href="http://jquery.com/">jQuery</a>,
+              <a href="http://jvectormap.com/">jVectorMap</a>,
+              <a href="http://ricostacruz.com/jquery.transit/">Transit</a>,
+              <a href="http://twitter.github.com/bootstrap/">bootstrap</a>
+            </li>
+            <li>
+              <b>Backend:</b>
+              <a href="http://golang.org/">Go</a>,
+              <a href="http://sockjs.org/">SockJS</a>,
+              <a href="https://github.com/rep/hpfeeds">hpfeeds</a>
+            </li>
+          </ul>
+          Zdrojový kód tohoto projektu je dostupný i na našem <a href="https://gitlab.labs.nic.cz/honeynet/honeymap">GitLabu</a>.
+          <h4>Autoři</h4>
+          <ul>
+            <li>
+              Florian Weingarten
+              (<a href="mailto:flo@hackvalue.de">flo@hackvalue.de</a>)
+              (<a href="https://twitter.com/fw1729">@fw1729</a>)
+              (<a href="https://github.com/fw42/">fw42</a>)
+            </li>
+            <li>
+              Mark Schloesser
+              (<a href="mailto:ms@mwcollect.org">ms@mwcollect.org</a>)
+              (<a href="https://twitter.com/repmovsb">@repmovsb</a>)
+              (<a href="https://github.com/rep">rep</a>)
+            </li>
+            <li>
+              Johannes Gilger
+              (<a href="mailto:heipei@heipei.net">heipei@heipei.net</a>)
+              (<a href="https://twitter.com/heipei">@heipei</a>)
+              (<a href="https://github.com/heipei">heipei</a>)
+            </li>
+          </ul>
 
-      <h3>Frequently Asked Questions</h3>
-      <h4>What am I looking at? Is this real?</h4>
-      <p>
-        Yes, you are looking at real attacks which are
-        captured by our honeypot sensors. Those sensors emulate
-        vulnerable systems and record incoming attacks.
-      </p>
-      <p>
-        Sensors run
-        <a href="http://dionaea.carnivore.it/">dionaea</a>,
-        <a href="http://glastopf.org/">glastopf</a>, or 
-        <a href="https://github.com/buffer/thug">thug</a>.
-      </p>
-      <h4>Where does the data come from?</h4>
-      Some (by far not all) of our sensors publish their captures
-      to our internal feed system
-      (<a href="https://github.com/rep/hpfeeds">hpfeeds</a>).
-      The map backend subscribes to this feed and makes geo location
-      lookups on the corresponding IP addresses.
-      <h4>Is the data representative?</h4>
-      No! Not at all. The Honeynet Project has many more sensors
-      around the world, but only a few push their captures.
-      <h4>What is going on in Aachen?!</h4>
-      Most of the time, you will see attacks targeted against Aachen.
-      This is because our honeypot at RWTH Aachen University is very
-      active and captures attacks against hundreds of target IP
-      addresses. This does not mean that Aachen is attacked more
-      often than the rest of the world!
-      <h4>How can I participate?</h4>
-      If you are already a member of the Honeynet Project, you can
-      just publish your captures to hpfeeds and they will automatically
-      show up on this map. If you are not a member, you can run your own
-      copy of this map on your own server. Code is on GitHub
-      (LGPL license).
-      <h4>Why did you create this map?</h4>
-      Just for fun. We like visualizations and we wanted to play
-      around with websockets. The first version of this map was
-      hacked together in essentially 2-3 days.
+          <h3>ČKD (často kladené dotazy)</h3>
+          <h4>To co sleduji je skutečné?</h4>
+          <p>
+            Ano, díváte se na reálné útoky které jsou zachyceny senzory
+            - honeypot systémy. Ty simulují napadnutelné systémy a útoky
+            zaznamenávají.
+          </p>
+          <p>
+            Provozované honeypoty:
+            <a href="http://glastopf.org/">glastopf</a>, 
+            <a href="http://conpot.org/">conpot</a>,
+            naše forky <a href="https://gitlab.labs.nic.cz/honeynet/dionaea">dionaea</a>,
+            <a href="https://gitlab.labs.nic.cz/honeynet/artillery">artillery</a>,
+            a <a href="https://gitlab.labs.nic.cz/honeynet/kippo">kippo</a>.
+          </p>
+          <h4>Odkud se data berou?</h4>
+          Zobrazená data jsou poskytována honeypot systémy provozovanými
+          výzkumným oddělením správce domény .CZ sdružením
+          <a href="https://www.nic.cz/">CZ.NIC</a>. Tato data jsou agregována
+          na našem serveru pomocí upravené aplikace
+          <a href="https://gitlab.labs.nic.cz/honeynet/hpfeeds">hpfeeds</a>. Serverová
+          část této aplikace je pak k tomuto agregátoru připojena a vyhledává
+          lokace odpovídající zachyceným IP adresám.
+          <h4>Jsou tato data reprezentativní?</h4>
+          Ne, v žádném případě. Jendá se jen o vzorek několika málo senzorů.
+          Pro mapu všech senzorů zapojených do projektu Honeynet se podívejte
+          na <a href="http://map.honeycloud.net/">původní mapu</a>. I ta však
+          zobrazuje jen data těch honeypotů, které přispívají to hpfeeds.
+          <h4>Co se děje v Praze?!</h4>
+          Všechny naše honeypoty se v současné době fyzicky nachází v Praze.
+          Protože mapa zobrazuje pouze jejich data, směřují všechny útoky
+          na Prahu.
+        </div>
+        <div class="tab-pane" id="en">
+          <p>
+            You are looking at the <b>HoneyMap</b>, a real-time world map which visualizes attacks
+            captured by honeypots <a href="https://www.nic.cz/">CZ.NIC</a> domain registry.
+            Red markers on the map represent attackers, green markers are targets (honeypot sensors).
+          </p>
+          <p>
+            This project is highly experimental and should be considered a BETA version. So far,
+            current Chrome and Firefox browsers should work fine. Opera, Safari and Internet Explorer
+            probably wont work completely. If you identify bugs or have feature requests, please let us know.
+          </p>
+          <h4>Technology</h4>
+          <ul>
+            <li>
+              <b>Frontend:</b>
+              <a href="http://coffeescript.org/">CoffeeScript</a>,
+              <a href="http://jquery.com/">jQuery</a>,
+              <a href="http://jvectormap.com/">jVectorMap</a>,
+              <a href="http://ricostacruz.com/jquery.transit/">Transit</a>,
+              <a href="http://twitter.github.com/bootstrap/">bootstrap</a>
+            </li>
+            <li>
+              <b>Backend:</b>
+              <a href="http://golang.org/">Go</a>,
+              <a href="http://sockjs.org/">SockJS</a>,
+              <a href="https://github.com/rep/hpfeeds">hpfeeds</a>
+            </li>
+          </ul>
+          Sourcecode for this project is available also on our <a href="https://gitlab.labs.nic.cz/honeynet/honeymap">GitLab</a>.
+          <h4>Authors</h4>
+          <ul>
+            <li>
+              Florian Weingarten
+              (<a href="mailto:flo@hackvalue.de">flo@hackvalue.de</a>)
+              (<a href="https://twitter.com/fw1729">@fw1729</a>)
+              (<a href="https://github.com/fw42/">fw42</a>)
+            </li>
+            <li>
+              Mark Schloesser
+              (<a href="mailto:ms@mwcollect.org">ms@mwcollect.org</a>)
+              (<a href="https://twitter.com/repmovsb">@repmovsb</a>)
+              (<a href="https://github.com/rep">rep</a>)
+            </li>
+            <li>
+              Johannes Gilger
+              (<a href="mailto:heipei@heipei.net">heipei@heipei.net</a>)
+              (<a href="https://twitter.com/heipei">@heipei</a>)
+              (<a href="https://github.com/heipei">heipei</a>)
+            </li>
+          </ul>
+
+          <h3>Frequently Asked Questions</h3>
+          <h4>What am I looking at? Is this real?</h4>
+          <p>
+            Yes, you are looking at real attacks which are
+            captured by our honeypot sensors. Those sensors emulate
+            vulnerable systems and record incoming attacks.
+          </p>
+          <p>
+            Sensors run
+            <a href="http://glastopf.org/">glastopf</a>,
+            <a href="http://conpot.org">conpot</a>,
+            our forks of <a href="https://gitlab.labs.nic.cz/honeynet/dionaea/">dionaea</a>,
+            <a href="https://gitlab.labs.nic.cz/honeynet/artillery/">artillery</a>,
+            and <a href="https://gitlab.labs.nic.cz/honeynet/kippo">kippo</a>.
+          </p>
+          <h4>Where does the data come from?</h4>
+          Shown data are captured by honeypot systems run by R&amp;D department
+          of <a href="https://www.nic.cz/">CZ.NIC</a> domain registry.
+          These data are aggregated by adjusted <a href="https://gitlab.labs.nic.cz/honeynet/hpfeeds">hpfeeds</a>
+          application on our server. The map backend subscribes to this feed
+          and makes geo location lookups on the corresponding IP addresses.
+          <h4>Is the data representative?</h4>
+          No! Not at all. The map displays only few sensors. To see map with
+          sensors pushing their captures to Honeynet Project visit
+          <a href="http://map.honeycloud.net/">original map</a>.
+          <h4>What is going on in Prague?!</h4>
+          All our honeypots are now physically located in Prague. This map display
+          only their data, so you will see just attacks targeted against Prague.
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Zavřít / Close</button>
     </div>
   </div>
 
   <script src="js/honeymap.js"></script>
-  <script src="js/google_analytics.js"></script>
 </body>
 </html>
