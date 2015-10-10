@@ -20,7 +20,7 @@
   <div id="world-map"></div>
   <div id="log"></div>
   <div id="logo1"><a href="http://www.honeynet.org/" target="_blank"><img src="img/hp_logo.png"></a></div>
-  <div id="logo2"><a href="https://labs.nic.cz/" target="_blank"><img src="img/CZ.NIC-CSIRT_negativ_RGB.png"></a></div>
+  <div id="logo2"><a href="https://www.nic.cz/" target="_blank"><img src="img/CZ.NIC-CSIRT_negativ_RGB.png"></a></div>
   <div id="helpbtn"><a href="#helpmodal" data-toggle="modal"><img src="img/help.png" alt="Help" /></a></div>
 
   <div class="modal hide" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodal" aria-hidden="true">
@@ -120,6 +120,11 @@
           <p>Další jsou v San Jose, Londýně, Frankfurtu, Heiwajimě, a Sydney.
           Protože mapa zobrazuje pouze jejich data, směřují všechny útoky
           pouze na tato města.</p>
+          <p>Zobrazujeme také útoky na ssh honeypot z routeru
+          <a href="https://www.turris.cz">Turris</a>, aby bylo vidět, kolik útoků právě
+          zachytil.<br>Data jsou agregována a na Honeymapu se dostávají přibližně každou
+          hodinu. Jelikož zdrojovou adresu routeru nesledujeme, jako cíl těchto útoků
+          je vždy nastavena Praha.</p>
         </div>
         <div class="tab-pane" id="en">
           <p>
@@ -202,6 +207,10 @@
           <p>Other honeypots are in San Jose, London, Frankfurt, Heiwajima
           and Sydney. This map displays only their data, so you will see
           just attacks targeted against these cities.</p>
+          <p>We also display attacks on ssh honeypot from <a href="https://www.turris.cz">Turris</a>
+          router.<br>It is aggregated data, which are displayed on Honeymap approximately
+          every hour. As we do not track address of router, Prague is set as destination.
+          This way you can see how many attacks were intercepted on Turris routers.</p>
         </div>
       </div>
     </div>
