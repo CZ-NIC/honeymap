@@ -15,11 +15,11 @@ class Feed
     if lat2 and lng2
       dst = new Marker(@map, lat2, lng2, data.type, "dst", data.countrycode2, data.city2)
       if dst.x == 0 and dst.y == 0 then dst = null
-    @addLog(src, dst, data.md5)
+    @addLog(src, dst, data.md5, data.permalink)
     @map.addMarker(src)
     @map.addMarker(dst) if dst
 
-  addLog: (src, dst, md5) ->
+  addLog: (src, dst, md5, permalink) ->
     return unless src.regionName()
     timestamp = new Date().toTimeString().substring(0,8)
     attacktype = if src.eventName == "thug.events" then "scan" else "attack"
@@ -34,5 +34,9 @@ class Feed
     if md5
       logstr += " <div class=\"log_bracket2\">[</div>" + \
                 "<div class=\"log_info\"><a href=\"http://www.virustotal.com/search/?query=#{md5}\">#{md5.substr(0,9)}</a></div>" + \
+                "<div class=\"log_bracket2\">]</div>"
+    if permalink
+      logstr += " <div class=\"log_bracket2\">[</div>" + \
+                "<div class=\"log_info\"><a href=\"#{permalink}\">link</a></div>" + \
                 "<div class=\"log_bracket2\">]</div>"
     @log.add logstr
