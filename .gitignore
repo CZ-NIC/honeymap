@@ -1,2 +1,13 @@
 *.swp
 README.html
+geoloc/nohup*
+GeoLite*
+broker
+build
+nohup.out
+readme
+backup
+geoloc/*json
+geoloc/*csv
+geoloc/*pyc
+geoloc/virustotals
