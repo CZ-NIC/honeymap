@@ -14,8 +14,10 @@ jQuery(document).ready ->
     log.fitSize()
 
   log.add "<b>Welcome to HoneyMap. This is a BETA version! Bug reports welcome :-)</b>"
-  log.add "Note that this is not <b>all</b> honeypots of the Honeynet Project,"
-  log.add "only those who voluntarily publish their captures to hpfeeds!"
+  log.add "Note that map display only sensors of <a href=\"https://www.nic.cz/\" target=\"_blank\">CZ.NIC</a> honeypots."
+  log.add ""
+  log.add "<b>Vítejte na HoneyMap. Toto je BETA verze! Hlášení chyb a návrhy k vylepšení jsou vítány :-)</b>"
+  log.add "Mapa zobrazuje pouze senzory honeypotů provozovaných sdružením <a href=\"https://www.nic.cz/\" target=\"_blank\">CZ.NIC</a>."
   log.add ""
 
   new Feed(honeymap, log, "geoloc.events")
