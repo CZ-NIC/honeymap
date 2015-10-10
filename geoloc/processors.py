@@ -288,6 +288,8 @@ def turris(identifier, payload, gi):
 
     message = {'type': 'turris', 'sensor': identifier, 'time': timestr(tstamp),
 'latitude': geoloc['latitude'], 'longitude': geoloc['longitude'], 'source': remote,
-'city': geoloc['city'], 'country': geoloc['country_name'], 'countrycode': geoloc['country_code']}
+'city': geoloc['city'], 'country': geoloc['country_name'], 'countrycode': geoloc['country_code'],
+'latitude2': geoloc2['latitude'], 'longitude2': geoloc2['longitude'],
+'city2': geoloc2['city'], 'country2': geoloc2['country_name'], 'countrycode2': geoloc2['country_code']}
 
     return message
