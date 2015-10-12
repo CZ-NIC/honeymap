@@ -6,7 +6,7 @@ class Transport
     @connect()
 
   connect: ->
-    @socket = new SockJS('data')
+    @socket = new SockJS('/data')
 
     @socket.onopen = =>
       @reconnectDelay = 1
