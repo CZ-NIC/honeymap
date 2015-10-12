@@ -7,10 +7,6 @@ body {
   background: -webkit-linear-gradient(top, #021320, #03244b, #021320);
 }
 
-a {
-  color: white;
-}
-
 #world-map {
   margin: 0px auto 0px auto;
 }
