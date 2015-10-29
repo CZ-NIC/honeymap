@@ -8,8 +8,8 @@ geoloc_Prague = {}
 geoloc_Prague['city'] = 'Prague'
 geoloc_Prague['country_name'] = 'Czech Republic'
 geoloc_Prague['country_code'] = 'CZ'
-geoloc_Prague['latitude'] = 50.083333
-geoloc_Prague['longitude'] = 14.416667
+geoloc_Prague['latitude'] = 50.08330154418945
+geoloc_Prague['longitude'] = 14.466699600219727
 geoloc2 = geoloc_Prague
 
 geoloc_San_Jose = {}
