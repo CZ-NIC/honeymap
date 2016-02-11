@@ -18,6 +18,9 @@ CHANNELS = [
     'kippo.sessions',
     'conpot.events',
     'turris',
+    'honssh.auth',
+    'honssh.sessions',
+    'honssh.shasum',
 #    'artillery',
 ]
 GEOLOC_CHAN = 'geoloc.events'
@@ -33,6 +36,9 @@ PROCESSORS = {
     'conpot.events': [conpot_events,],
     'turris': [turris,],
     'artillery': [artillery,],
+    'honssh.auth': [honssh_sessions,],
+    'honssh.sessions': [honssh_sessions,],
+    'honssh.shasum': [honssh_sessions,],
 }
 
 def main():
