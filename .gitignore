@@ -11,3 +11,11 @@ geoloc/*json
 geoloc/*csv
 geoloc/*pyc
 geoloc/virustotals
+geoloc/todo
+geoloc/old_nohups/
+geoloc/malware_report
+geoloc/grep
+*_old
+*_OLD
+*_bak
+input/
