@@ -1,0 +1,189 @@
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+#controls-wrapper,
+.jvectormap-zoomin,
+.jvectormap-zoomout,
+#autoplay-toggler {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(30, 30, 30, 0.9);
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0.1rem 0.75rem #000;
+    position: fixed;
+    transition: all 0.33s;
+    margin: 0;
+}
+
+#autoplay-toggler {
+    box-shadow: 0 0.1rem 0.75rem rgba(0,0,0, 0.25);
+}
+
+#controls-wrapper {
+    top: 1rem;
+    left: 1rem;
+    width: 17rem;
+}
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+    position: fixed;
+    top: 1rem;
+    left: 20rem;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.jvectormap-zoomin,
+.jvectormap-zoomout,
+#autoplay-toggler {
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.jvectormap-zoomin:hover,
+.jvectormap-zoomin:focus,
+.jvectormap-zoomout:hover,
+.jvectormap-zoomout:focus,
+#autoplay-toggler:hover,
+#autoplay-toggler:focus {
+    background-color: rgba(75, 75, 75, 0.9);
+    box-shadow: 0 0.1rem 0.2rem #333;
+}
+
+.jvectormap-zoomin {
+    top: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.jvectormap-zoomout {
+    top: 3rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+#autoplay-toggler {
+    display: inline-block;
+}
+
+
+#honeymap-slider-wrapper {
+    margin: 0 0 0 3.5rem;
+    width: 10rem;
+    height: 2rem;
+    padding-top: 0.2rem;
+}
+
+.slider-track {
+    max-width: 10rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+}
+
+.slider-track,
+.slider-track-high,
+.slider-track-low,
+.slider-selection {
+    background: rgba(10, 10 , 10, 0.9);
+}
+
+.slider-handle {
+    border-radius: 0.25rem;
+    background: rgba(75, 75, 75, 1);
+}
+
+#hourIndicator {
+    display: inline-block;
+    float: right;
+    margin: 0.33rem 0.1rem 0 0.75rem;
+    text-align: right;
+    line-height: 1.5rem;
+}
+
+#sandbox-container {
+    margin-top: 0.5rem;
+    width: 16rem;
+}
+
+.input-group.date {
+    width: 100%;
+}
+
+#sandbox-container input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.33rem;
+    background: rgba(10, 10 , 10, 0.9);
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.input-group-addon {
+    display: none;
+}
+
+.datepicker {
+    margin: 3rem 0 0 -0.55rem;
+}
+
+.datepicker.dropdown-menu {
+    background: rgba(30,30,30, 0.9);
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.datepicker.dropdown-menu td,
+.datepicker.dropdown-menu th {
+    padding: 0.7em;
+}
+
+.datepicker .prev,
+.datepicker .next {
+    background: rgba(30,30,30, 0.9);
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0.1rem 0.75rem #000;
+}
+
+.datepicker .prev,
+.datepicker .next,
+.datepicker.dropdown-menu th {
+    font-weight: bold;
+    font-size: 1.25em;
+    padding: 0.5em;
+}
+
+.datepicker.dropdown-menu th.dow {
+    font-size: 1em;
+}
+
+.datepicker .prev:hover,
+.datepicker .next:hover {
+    background-color: rgba(75, 75, 75, 0.9);
+    box-shadow: 0 0.1rem 0.2rem #333;
+}
+
+.datepicker .datepicker-switch:hover,
+.datepicker tfoot tr th:hover,
+.datepicker table tr td.day:hover,
+.datepicker table tr td.day.focused,
+.datepicker table tr td span:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.active:hover {
+    background: rgba(255, 255, 255, 0.65);
+    color: #000;
+}
+
+.datepicker-dropdown.datepicker-orient-bottom:after {
+    display: none;
+}
+
+#logo1 img,
+#logo2 img {
+    border: 0;
+}
