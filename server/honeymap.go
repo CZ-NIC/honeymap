@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"github.com/fw42/go-hpfeeds"
-	"github.com/fzzy/sockjs-go/sockjs"
+	"github.com/ChrisFernandez/sockjs-go/sockjs"
 	"io/ioutil"
 	"log"
 	"net/http"
