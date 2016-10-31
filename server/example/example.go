@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/fzzy/sockjs-go/sockjs"
+	"github.com/ChrisFernandez/sockjs-go/sockjs"
 	"log"
 	"math/rand"
 	"net/http"

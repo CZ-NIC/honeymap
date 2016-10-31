@@ -15,7 +15,7 @@ Front-end code is written in [CoffeeScript](http://coffeescript.org/) and makes 
 [jQuery Transit](http://ricostacruz.com/jquery.transit/) (CSS3 animations).
 
 Back-end code is written in [Go](http://golang.org/) and makes use of
-[sockjs-go](https://github.com/fzzy/sockjs-go/) and
+[sockjs-go](https://github.com/ChrisFernandez/sockjs-go/) and
 [go-hpfeeds](https://github.com/fw42/go-hpfeeds/).
 
 (The earliest version of HoneyMap was using [node.js](http://nodejs.org/)
